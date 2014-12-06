@@ -13,21 +13,24 @@ class Shape: NSView {
 
     var shapeNumber = 0
     var initialPoint = CGPointMake(0, 0)
+    var color = NSColor.blueColor()
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         // Drawing code here.
-        switch(shapeNumber){
+        var shape = NSBezierPath(rect: NSMakeRect(0, 0, 100, 100))
+        switch(shapeNumber%3){
         case 0:
-            DrawingMethods.drawOval()
+            shape = NSBezierPath(ovalInRect: NSMakeRect(0, 0, 100, 100))
             break
         case 1:
-            DrawingMethods.drawRectangle()
+            shape = NSBezierPath(roundedRect: NSMakeRect(0, 0, 100, 100), xRadius: 20, yRadius: 20)
             break
         default:
-            DrawingMethods.drawRectangle()
             break
         }
+        color.setFill()
+        shape.fill()
     }
     
     override func mouseDown(theEvent: NSEvent) {
@@ -38,7 +41,7 @@ class Shape: NSView {
 
     override func mouseDragged(theEvent: NSEvent) {
         self.setFrameOrigin(CGPointMake(theEvent.locationInWindow.x - initialPoint.x,theEvent.locationInWindow.y - initialPoint.y))
-//        super.mouseDragged(theEvent)
+        superview?.mouseDragged(theEvent)
     }
     
     override func mouseUp(theEvent: NSEvent) {
@@ -49,5 +52,15 @@ class Shape: NSView {
     
     func setShape(shapeNumb: Int){
         self.shapeNumber = shapeNumb
+        color = getRandomColor()
     }
+    
+    func getRandomColor() -> NSColor{
+        
+        var randomRed:CGFloat = CGFloat(drand48())
+        var randomGreen:CGFloat = CGFloat(drand48())
+        var randomBlue:CGFloat = CGFloat(drand48())
+        return NSColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 0.5)
+    }
+    
 }

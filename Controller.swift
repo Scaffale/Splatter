@@ -18,9 +18,9 @@ class Controller: NSView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        for index in 1...5 {
+        for index in 1...9 {
             var newShape = Shape()
-            newShape.setShape(index%2)
+            newShape.setShape(index)
             listOfShapes.append(newShape)
             addSubview(newShape)
             newShape.display()
@@ -28,5 +28,13 @@ class Controller: NSView {
             newShape.setFrameSize(CGSizeMake(100, 100))
         }
     }
+    
+    override func mouseDragged(theEvent: NSEvent) {
+//        println("mouse dragged")
 
+    }
+    
+    override func keyDown(theEvent: NSEvent) {
+        println("key event")
+    }
 }
