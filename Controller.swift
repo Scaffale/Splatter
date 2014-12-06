@@ -10,16 +10,23 @@ import Cocoa
 
 class Controller: NSView {
 
+    var listOfShapes = [Shape]()
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-
-        // Drawing code here.
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         for index in 1...5 {
-            println("init numb \(index)")
+            var newShape = Shape()
+            newShape.setShape(index%2)
+            listOfShapes.append(newShape)
+            addSubview(newShape)
+            newShape.display()
+            newShape.setFrameOrigin(CGPointMake(100, 100))
+            newShape.setFrameSize(CGSizeMake(100, 100))
         }
     }
+
 }

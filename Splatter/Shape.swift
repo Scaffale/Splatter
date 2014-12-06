@@ -28,7 +28,6 @@ class Shape: NSView {
             DrawingMethods.drawRectangle()
             break
         }
-
     }
     
     override func mouseDown(theEvent: NSEvent) {
@@ -36,9 +35,16 @@ class Shape: NSView {
         initialPoint.x -= frame.origin.x
         initialPoint.y -= frame.origin.y
     }
+
     override func mouseDragged(theEvent: NSEvent) {
         self.setFrameOrigin(CGPointMake(theEvent.locationInWindow.x - initialPoint.x,theEvent.locationInWindow.y - initialPoint.y))
-        super.mouseDragged(theEvent)
+//        super.mouseDragged(theEvent)
+    }
+    
+    override func mouseUp(theEvent: NSEvent) {
+        var superView = superview
+        self.removeFromSuperview()
+        superView?.addSubview(self)
     }
     
     func setShape(shapeNumb: Int){

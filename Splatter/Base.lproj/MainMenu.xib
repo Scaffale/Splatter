@@ -674,11 +674,6 @@
             <view key="contentView" id="EiT-Mj-1SZ" customClass="Controller" customModule="Splatter" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="900" height="900"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeG-R4-1kX" customClass="Shape" customModule="Splatter">
-                        <rect key="frame" x="20" y="368" width="100" height="100"/>
-                    </customView>
-                </subviews>
             </view>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="Fo4-4m-4w1" customClass="NSTextFieldCell"/>
