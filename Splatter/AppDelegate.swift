@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 HCI_assignment. All rights reserved.
 //
 
+//This splatter is a demo to manage 2D elements overlapped.
 import Cocoa
 
 @NSApplicationMain
